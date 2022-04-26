@@ -11,8 +11,8 @@ scaler = StandardScaler()
 header = st.container()
 
 with header:
-    st.title("uplode you csv file here")
-    st.text("make sure it has an X and Y fileds with capitol letters")
+    st.title("Upload you csv file here")
+    st.text("make sure it has an X and Y fields with capital letters")
     data_file = st.file_uploader("Upload CSV", type=['csv'])
     if data_file is not None:
         full_data = pd.read_csv(data_file)
