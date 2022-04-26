@@ -4,7 +4,6 @@ import numpy as np
 import pickle
 import pandas as pd
 from sklearn.preprocessing import StandardScaler
-import matplotlib.pyplot as plt
 import pydeck as pdk
 import geopy.distance
 scaler = StandardScaler()
