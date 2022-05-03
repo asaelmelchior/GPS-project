@@ -11,7 +11,7 @@ scaler = StandardScaler()
 header = st.container()
 
 with header:
-    st.title("Upload you csv file here")
+    st.title("Upload your csv file here")
     st.text("make sure it has an X and Y fields with capital letters")
     data_file = st.file_uploader("Upload CSV", type=['csv'])
     if data_file is not None:
