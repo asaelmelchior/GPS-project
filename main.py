@@ -41,7 +41,7 @@ with header:
         new_data["angel"] = 180. * np.arctan2(y_ch2, x_ch2) / np.pi
         # new_data["angel_diff"]=np.diff(new_data["angel"],prepend=[new_data["angel"][0]])
         Y = new_data["track"]
-        mag_mean = new_data.iloc[:, 1:3]
+        mag_mean = new_data[['X','Y']].copy()
         mag_mean["mean"] = float(0)
         for idx_row in range(mag_mean.shape[0] - 5):
             for idx5 in range(1, 6):
@@ -51,7 +51,7 @@ with header:
                     mag_mean["mean"].values[idx_row] += loc_dist
             mag_mean["mean"].values[idx_row] = mag_mean["mean"].values[idx_row] / 5
         new_data["mean"] = mag_mean["mean"]
-        mag_std = new_data.iloc[:, 1:3]
+        mag_std = new_data[['X','Y']].copy()
         mag_std["std"] = float(0)
         for idx_row in range(mag_mean.shape[0] - 5):
             diff_std = []
@@ -63,7 +63,7 @@ with header:
                 mag_std["std"].values[idx_row] = np.std(diff_std)
         new_data["std"] = mag_std["std"]
         new_data.fillna(0, inplace=True)
-        X = new_data.iloc[:, 6:]
+        X = new_data[['first_gradiant_mag','secand_gradiant_mag','angel','mean','std']].copy()
         X = scaler.fit_transform(X)
 
         with open('best_lin.pkl', 'rb') as f:
